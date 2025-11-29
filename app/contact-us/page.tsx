@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Toast } from '@/components/ui/toast'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
-interface FormData {
+interface ContactFormData {
   name: string
   email: string
   subject: string
@@ -22,7 +22,7 @@ interface ToastState {
 }
 
 export default function ContactUs() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
@@ -38,7 +38,7 @@ export default function ContactUs() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setFormData((prev: ContactFormData) => ({ ...prev, [name]: value }))
   }
 
   const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
