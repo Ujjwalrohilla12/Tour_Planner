@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Toast } from '@/components/ui/toast'
-import { useMutation } from 'convex/react'
-import { api } from '@/convex/_generated/api'
+// import { useMutation } from 'convex/react'
+// import { api } from '@/convex/_generated/api'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 interface FormData {
@@ -38,7 +38,7 @@ export default function ContactUs() {
     variant: 'default'
   })
 
-  const createMessage = useMutation(api.messages.createMessage)
+  // const createMessage = useMutation(api.messages.createMessage)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -74,8 +74,8 @@ export default function ContactUs() {
       const result = await response.json()
 
       if (result.success) {
-        // Save to Convex DB
-        await createMessage(formData)
+        // Save to Convex DB (disabled for now)
+        // await createMessage(formData)
         
         showToast('Success!', result.message)
         setFormData({ name: '', email: '', subject: '', message: '' })
