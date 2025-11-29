@@ -38,7 +38,7 @@ export default function ContactUs() {
     variant: 'default'
   })
 
-  // const createMessage = useMutation(api.messages.createMessage)
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
