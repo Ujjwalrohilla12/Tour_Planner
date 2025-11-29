@@ -5,8 +5,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Toast } from '@/components/ui/toast'
-// import { useMutation } from 'convex/react'
-// import { api } from '@/convex/_generated/api'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 interface FormData {
@@ -38,8 +36,6 @@ export default function ContactUs() {
     variant: 'default'
   })
 
-
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -64,7 +60,6 @@ export default function ContactUs() {
     setIsLoading(true)
 
     try {
-      // Send to API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -74,9 +69,6 @@ export default function ContactUs() {
       const result = await response.json()
 
       if (result.success) {
-        // Save to Convex DB (disabled for now)
-        // await createMessage(formData)
-        
         showToast('Success!', result.message)
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
@@ -92,7 +84,6 @@ export default function ContactUs() {
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4'>
       <div className='max-w-6xl mx-auto'>
-        {/* Header */}
         <div className='text-center mb-12'>
           <h1 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>Contact Us</h1>
           <p className='text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto'>
@@ -101,7 +92,6 @@ export default function ContactUs() {
         </div>
 
         <div className='grid lg:grid-cols-2 gap-12'>
-          {/* Contact Form */}
           <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8'>
             <h2 className='text-2xl font-semibold mb-6 text-gray-900 dark:text-white'>Send us a message</h2>
             
@@ -183,7 +173,6 @@ export default function ContactUs() {
             </form>
           </div>
 
-          {/* Contact Info */}
           <div className='space-y-8'>
             <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8'>
               <h2 className='text-2xl font-semibold mb-6 text-gray-900 dark:text-white'>Get in touch</h2>
@@ -249,7 +238,6 @@ export default function ContactUs() {
         </div>
       </div>
 
-      {/* Toast */}
       {toast.show && (
         <Toast
           title={toast.title}
