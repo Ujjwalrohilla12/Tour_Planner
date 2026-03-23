@@ -2,8 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  turbopack: {
+    root: './',
+  },
   images:{
-    domains:['places.googleapis.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'places.googleapis.com',
+      },
+    ],
   }
 };
 
